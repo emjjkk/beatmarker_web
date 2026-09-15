@@ -1,0 +1,3 @@
+Flask>=3.0
+essentia
+numpy>=1.24

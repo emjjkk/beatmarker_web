@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1 class="hero-title">Beatmarker</h1>
+  <p class="hero-sub">
+    Detect beats and onsets from audio files and export them to a
+    <code>.edl</code> for your editing workflow.
+  </p>
+  <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Open Dashboard →</a>
+
+  <ul class="feature-list">
+    <li>◆ Multi-feature beat tracking + onset detection</li>
+    <li>◆ Loudness filtering to keep only the drops</li>
+    <li>◆ Snapping onsets to nearby beats</li>
+    <li>◆ EDL + plain timestamp export</li>
+    <li>◆ No login. Files auto-delete after 6 hours.</li>
+  </ul>
+</section>
+{% endblock %}

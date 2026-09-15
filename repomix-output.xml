@@ -1,0 +1,1130 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+static/
+  css/
+    style.css
+  js/
+    app.js
+    dashboard.js
+templates/
+  base.html
+  dashboard.html
+  index.html
+app.py
+config.py
+process.py
+requirements.txt
+worker.py
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="static/css/style.css">
+:root {
+  --bg: #f4f3ee;
+  --bg-alt: #eceae2;
+  --fg: #16150f;
+  --muted: #6a6659;
+  --border: #16150f;
+  --accent: #16150f;
+  --accent-fg: #f4f3ee;
+  --danger: #8b1a1a;
+  --success: #1a5c2a;
+  --radius: 0px; /* square corners */
+}
+
+[data-theme="dark"] {
+  --bg: #101010;
+  --bg-alt: #171717;
+  --fg: #ececec;
+  --muted: #8a8a8a;
+  --border: #ececec;
+  --accent: #ececec;
+  --accent-fg: #101010;
+  --danger: #e06c6c;
+  --success: #7fd68f;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "JetBrains Mono", "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--fg); text-decoration: none; border-bottom: 1px dashed var(--border); }
+a:hover { border-bottom-style: solid; }
+
+code {
+  background: var(--bg-alt);
+  padding: 0 4px;
+  border: 1px dashed var(--border);
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  border-bottom: 1px dashed var(--border);
+  background: var(--bg);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}
+
+.header-actions { display: flex; gap: 8px; align-items: center; }
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover { background: var(--bg-alt); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-style: solid;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-ghost { border-style: dashed; }
+
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Hero */
+.hero { padding: 40px 0 24px; }
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0 0 8px;
+  letter-spacing: -1px;
+  font-weight: 700;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin: 0 0 24px;
+  max-width: 640px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 16px 0 0;
+  margin: 32px 0 0;
+  border-top: 1px dashed var(--border);
+}
+.feature-list li {
+  padding: 6px 0;
+  color: var(--muted);
+}
+
+/* Panels */
+.panel {
+  border: 1px dashed var(--border);
+  padding: 20px;
+  margin-bottom: 24px;
+  background: var(--bg);
+}
+
+.panel-title {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 10px;
+}
+
+/* Form */
+.grid-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-full { grid-column: 1 / -1; }
+.field-inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+  padding: 8px 10px;
+  border: 1px dashed var(--border);
+  background: var(--bg-alt);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 0.95rem;
+  border-radius: var(--radius);
+}
+
+input[type="range"] { accent-color: var(--fg); }
+
+.hint { font-size: 0.75rem; color: var(--muted); }
+
+/* Jobs list */
+.jobs { display: flex; flex-direction: column; gap: 12px; }
+
+.job {
+  border: 1px dashed var(--border);
+  padding: 14px;
+}
+
+.job-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.job-name { font-weight: 700; word-break: break-all; }
+
+.job-status {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 2px 8px;
+  border: 1px dashed var(--border);
+}
+
+.job-status.done    { color: var(--success); border-color: var(--success); }
+.job-status.error   { color: var(--danger);  border-color: var(--danger); }
+.job-status.processing { color: var(--fg); }
+
+.job-meta {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.progress {
+  margin-top: 10px;
+  height: 8px;
+  border: 1px dashed var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--fg);
+  width: 0;
+  transition: width 0.4s ease;
+}
+
+.job-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.muted { color: var(--muted); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px dashed var(--border);
+  padding: 16px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 620px) {
+  .grid-form { grid-template-columns: 1fr; }
+  .header-actions { flex-wrap: wrap; justify-content: flex-end; }
+}
+</file>
+
+<file path="static/js/app.js">
+// Theme toggle — shared across pages
+(function () {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+  btn.addEventListener("click", () => {
+    const root = document.documentElement;
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("bm-theme", next);
+  });
+})();
+</file>
+
+<file path="static/js/dashboard.js">
+(function () {
+  const form = document.getElementById("upload-form");
+  const submitBtn = document.getElementById("submit-btn");
+  const jobsList = document.getElementById("jobs-list");
+  const loudness = document.getElementById("loudness");
+  const loudnessVal = document.getElementById("loudness-val");
+
+  loudness.addEventListener("input", () => {
+    loudnessVal.textContent = loudness.value;
+  });
+
+  function fmtTime(ts) {
+    if (!ts) return "";
+    return new Date(ts * 1000).toLocaleTimeString();
+  }
+
+  function jobCard(job) {
+    const el = document.createElement("div");
+    el.className = "job";
+    el.dataset.id = job.id;
+
+    const pct = job.progress || 0;
+    const isDone = job.status === "done";
+    const isError = job.status === "error";
+    const isProcessing = job.status === "processing" || job.status === "queued";
+
+    el.innerHTML = `
+      <div class="job-head">
+        <span class="job-name">${escapeHtml(job.filename)}</span>
+        <span class="job-status ${job.status}">${job.status}</span>
+      </div>
+      <div class="job-meta">
+        <span>${escapeHtml(job.message || "")}</span>
+        ${job.marker_count ? `<span>◆ ${job.marker_count} markers</span>` : ""}
+        <span>${fmtTime(job.created_at)}</span>
+      </div>
+      ${isProcessing ? `
+        <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
+      ` : ""}
+      ${isDone ? `
+        <div class="job-actions">
+          <a class="btn btn-ghost" href="/api/jobs/${job.id}/download/txt">↓ beats.txt</a>
+          <a class="btn btn-ghost" href="/api/jobs/${job.id}/download/edl">↓ markers.edl</a>
+          <button class="btn btn-ghost" data-action="delete">✕ Delete</button>
+        </div>
+      ` : ""}
+      ${isError ? `
+        <div class="job-meta" style="color:var(--danger)">
+          <span>${escapeHtml(job.error || "Unknown error")}</span>
+        </div>
+        <div class="job-actions">
+          <button class="btn btn-ghost" data-action="delete">✕ Dismiss</button>
+        </div>
+      ` : ""}
+    `;
+
+    el.querySelectorAll("[data-action='delete']").forEach(b => {
+      b.addEventListener("click", async () => {
+        await fetch(`/api/jobs/${job.id}`, { method: "DELETE" });
+        refresh();
+      });
+    });
+
+    return el;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;",
+      '"': "&quot;", "'": "&#39;"
+    }[c]));
+  }
+
+  async function refresh() {
+    try {
+      const res = await fetch("/api/jobs");
+      const data = await res.json();
+      const jobs = data.jobs || [];
+      if (!jobs.length) {
+        jobsList.innerHTML = '<p class="muted">No jobs yet.</p>';
+        return;
+      }
+      jobsList.innerHTML = "";
+      jobs.forEach(j => jobsList.appendChild(jobCard(j)));
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Uploading…";
+
+    const fd = new FormData();
+    const fileInput = document.getElementById("file-input");
+    if (!fileInput.files.length) {
+      alert("Please choose a file.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Process";
+      return;
+    }
+    fd.append("file", fileInput.files[0]);
+    fd.append("sensitivity", document.getElementById("sensitivity").value);
+    fd.append("loudness", document.getElementById("loudness").value);
+    fd.append("min_gap", document.getElementById("min_gap").value);
+    fd.append("fps", document.getElementById("fps").value);
+    fd.append("beats_only", document.getElementById("beats_only").checked);
+
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Upload failed");
+      form.reset();
+      loudnessVal.textContent = "70";
+      await refresh();
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Process";
+    }
+  });
+
+  // Initial load + poll while jobs are in progress
+  refresh();
+  setInterval(refresh, 2500);
+})();
+</file>
+
+<file path="templates/base.html">
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Beatmarker{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand">Beatmarker</a>
+    <div class="header-actions">
+      <a class="btn btn-ghost" target="_blank" rel="noopener"
+         href="https://www.producthunt.com/">Vote on ProductHunt</a>
+      <a class="btn btn-ghost" target="_blank" rel="noopener"
+         href="https://www.buymeacoffee.com/">Buy Me a Coffee</a>
+      <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <span>Files auto-delete after 6 hours.</span>
+  </footer>
+
+  <script>
+    // Apply saved theme before paint
+    (function () {
+      const saved = localStorage.getItem("bm-theme");
+      const prefers = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", saved || prefers);
+    })();
+  </script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
+</file>
+
+<file path="templates/dashboard.html">
+{% extends "base.html" %}
+{% block title %}Dashboard · Beatmarker{% endblock %}
+{% block content %}
+
+<section class="panel">
+  <h2 class="panel-title">New Job</h2>
+
+  <form id="upload-form" class="grid-form">
+    <label class="field field-full">
+      <span class="field-label">Audio File</span>
+      <input type="file" name="file" id="file-input"
+             accept=".wav,.mp3,.flac,.ogg,.m4a,.aiff,.aif" required>
+      <span class="hint">wav, mp3, flac, ogg, m4a, aiff — max 200 MB</span>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Sensitivity</span>
+      <select name="sensitivity" id="sensitivity">
+        <option value="very_low">Very Low — only major drops</option>
+        <option value="low" selected>Low — significant hits</option>
+        <option value="medium">Medium</option>
+        <option value="high">High — subtle hits</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Loudness Threshold <span id="loudness-val">70</span>%</span>
+      <input type="range" name="loudness" id="loudness" min="0" max="100" value="70">
+      <span class="hint">Higher = fewer, louder markers</span>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Min Gap (seconds)</span>
+      <input type="number" name="min_gap" id="min_gap" step="0.1" min="0" value="0.5">
+    </label>
+
+    <label class="field">
+      <span class="field-label">FPS</span>
+      <input type="number" name="fps" id="fps" min="1" max="120" value="30">
+    </label>
+
+    <label class="field field-inline">
+      <input type="checkbox" name="beats_only" id="beats_only">
+      <span>Beats only (ignore onsets)</span>
+    </label>
+
+    <div class="field field-full">
+      <button type="submit" class="btn btn-primary" id="submit-btn">Process</button>
+    </div>
+  </form>
+</section>
+
+<section class="panel">
+  <h2 class="panel-title">Jobs</h2>
+  <div id="jobs-list" class="jobs">
+    <p class="muted">No jobs yet.</p>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
+</file>
+
+<file path="templates/index.html">
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1 class="hero-title">Beatmarker</h1>
+  <p class="hero-sub">
+    Detect beats and onsets from audio files and export them to a
+    <code>.edl</code> for your editing workflow.
+  </p>
+  <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Open Dashboard →</a>
+
+  <ul class="feature-list">
+    <li>◆ Multi-feature beat tracking + onset detection</li>
+    <li>◆ Loudness filtering to keep only the drops</li>
+    <li>◆ Snapping onsets to nearby beats</li>
+    <li>◆ EDL + plain timestamp export</li>
+    <li>◆ No login. Files auto-delete after 6 hours.</li>
+  </ul>
+</section>
+{% endblock %}
+</file>
+
+<file path="app.py">
+import os
+import uuid
+from pathlib import Path
+from flask import (
+    Flask, render_template, request, jsonify,
+    send_file, abort, url_for
+)
+from werkzeug.utils import secure_filename
+
+from config import Config
+from worker import enqueue, jobs, start_workers
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# Start background workers once
+start_workers(num_workers=2)
+
+
+def allowed_file(name):
+    return (
+        "." in name
+        and name.rsplit(".", 1)[1].lower() in Config.ALLOWED_EXTENSIONS
+    )
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
+
+
+@app.route("/api/upload", methods=["POST"])
+def upload():
+    if "file" not in request.files:
+        return jsonify(error="No file provided"), 400
+
+    f = request.files["file"]
+    if not f.filename or not allowed_file(f.filename):
+        return jsonify(error="Unsupported file type"), 400
+
+    # Build params from form
+    try:
+        params = {
+            "fps": int(request.form.get("fps", 30)),
+            "sensitivity": request.form.get("sensitivity", "low"),
+            "loudness": int(request.form.get("loudness", 70)),
+            "min_gap": float(request.form.get("min_gap", 0.5)),
+            "beats_only": request.form.get("beats_only", "false").lower() == "true",
+        }
+    except (ValueError, TypeError) as e:
+        return jsonify(error=f"Invalid parameters: {e}"), 400
+
+    if params["sensitivity"] not in {"very_low", "low", "medium", "high"}:
+        return jsonify(error="Invalid sensitivity"), 400
+    if not (0 <= params["loudness"] <= 100):
+        return jsonify(error="Loudness must be 0–100"), 400
+    if params["min_gap"] < 0:
+        return jsonify(error="min_gap must be >= 0"), 400
+
+    # Save upload with a unique prefix
+    safe_name = secure_filename(f.filename)
+    uid = uuid.uuid4().hex[:8]
+    stored_name = f"{uid}_{safe_name}"
+    dest = Path(Config.UPLOAD_FOLDER) / stored_name
+    f.save(dest)
+
+    try:
+        job = enqueue(stored_name, params)
+    except RuntimeError:
+        dest.unlink(missing_ok=True)
+        return jsonify(error="Server busy, try again shortly"), 503
+
+    return jsonify(job_id=job["id"])
+
+
+@app.route("/api/jobs")
+def list_jobs():
+    return jsonify(jobs=jobs.all())
+
+
+@app.route("/api/jobs/<job_id>")
+def job_status(job_id):
+    job = jobs.get(job_id)
+    if not job:
+        return jsonify(error="not found"), 404
+    return jsonify(job)
+
+
+@app.route("/api/jobs/<job_id>/download/<kind>")
+def download(job_id, kind):
+    job = jobs.get(job_id)
+    if not job or job["status"] != "done":
+        abort(404)
+    if kind not in {"txt", "edl"}:
+        abort(400)
+
+    filename = job.get(f"output_{kind}")
+    if not filename:
+        abort(404)
+
+    path = Path(Config.OUTPUT_FOLDER) / filename
+    if not path.exists():
+        abort(404)
+
+    base = Path(job["filename"]).stem
+    download_name = f"{base}_markers.{kind}"
+    mimetype = "text/plain" if kind == "txt" else "text/plain"
+
+    return send_file(path, as_attachment=True,
+                     download_name=download_name,
+                     mimetype=mimetype)
+
+
+@app.route("/api/jobs/<job_id>", methods=["DELETE"])
+def delete_job(job_id):
+    """Allow users to manually delete their files before TTL."""
+    job = jobs.delete(job_id)
+    if not job:
+        return jsonify(error="not found"), 404
+    for key in ("output_txt", "output_edl"):
+        if job.get(key):
+            (Path(Config.OUTPUT_FOLDER) / job[key]).unlink(missing_ok=True)
+    return jsonify(ok=True)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=False)
+</file>
+
+<file path="config.py">
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+class Config:
+    SECRET_KEY = os.environ.get("SECRET_KEY", "change-me-in-production")
+    UPLOAD_FOLDER = BASE_DIR / "uploads"
+    OUTPUT_FOLDER = BASE_DIR / "outputs"
+    MAX_CONTENT_LENGTH = 200 * 1024 * 1024  # 200 MB
+    ALLOWED_EXTENSIONS = {"wav", "mp3", "flac", "ogg", "m4a", "aiff", "aif"}
+    FILE_TTL_SECONDS = 6 * 60 * 60  # 6 hours
+    CLEANUP_INTERVAL = 15 * 60      # run cleanup every 15 min
+    MAX_QUEUE_SIZE = 50             # refuse new jobs past this
+
+Config.UPLOAD_FOLDER.mkdir(exist_ok=True)
+Config.OUTPUT_FOLDER.mkdir(exist_ok=True)
+</file>
+
+<file path="process.py">
+import numpy as np
+
+try:
+    from essentia.standard import (
+        MonoLoader,
+        FrameGenerator,
+        Windowing,
+        Spectrum,
+        OnsetDetection,
+        Onsets,
+        BeatTrackerMultiFeature,
+        Loudness,
+    )
+except ImportError as e:
+    raise ImportError(
+        "Essentia failed to import. Install with: pip install essentia"
+    ) from e
+
+
+# ------------------ Time utils ------------------
+
+def format_timestamp(seconds):
+    minutes = int(seconds // 60)
+    secs = int(seconds % 60)
+    milliseconds = int((seconds - int(seconds)) * 1000)
+    return f"{minutes:02d}:{secs:02d}:{milliseconds:03d}"
+
+
+def seconds_to_timecode(seconds, fps=30):
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    secs = int(seconds % 60)
+    frames = int((seconds % 1) * fps)
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}:{frames:02d}"
+
+
+# ------------------ Core logic ------------------
+
+def detect_beats(audio):
+    tracker = BeatTrackerMultiFeature()
+    beats, confidence = tracker(audio)
+    return [float(b) for b in beats]
+
+
+def detect_onsets(audio, sample_rate=44100, sensitivity="low"):
+    frame_size = 2048
+    hop_size = 512
+
+    window = Windowing(type="hann")
+    spectrum_alg = Spectrum()
+    odf = OnsetDetection(method="hfc")
+    onset_picker = Onsets()
+
+    odf_values = []
+    for frame in FrameGenerator(
+        audio, frameSize=frame_size, hopSize=hop_size, startFromZero=True
+    ):
+        windowed = window(frame)
+        spectrum = spectrum_alg(windowed)
+        odf_values.append(odf(spectrum, spectrum))
+
+    odf_array = np.array(odf_values)
+    if len(odf_array) > 0 and odf_array.max() > 0:
+        odf_array = odf_array / odf_array.max()
+
+        thresholds = {
+            "very_low": 0.6,
+            "low": 0.4,
+            "medium": 0.2,
+            "high": 0.1,
+        }
+        threshold = thresholds.get(sensitivity, 0.4)
+        odf_array[odf_array < threshold] = 0
+
+    odf_matrix = np.array([odf_array.tolist()])
+    onset_times = onset_picker(odf_matrix, [hop_size / sample_rate])
+    return [float(o) for o in onset_times]
+
+
+def filter_by_loudness(audio, times, sample_rate=44100, percentile=70):
+    frame_size = 4096
+    hop_size = 2048
+
+    loudness_alg = Loudness()
+    loudness_values = []
+    time_stamps = []
+
+    for i, frame in enumerate(
+        FrameGenerator(audio, frameSize=frame_size, hopSize=hop_size, startFromZero=True)
+    ):
+        loudness_values.append(loudness_alg(frame))
+        time_stamps.append(i * hop_size / sample_rate)
+
+    if not loudness_values:
+        return []
+
+    threshold = np.percentile(loudness_values, percentile)
+
+    filtered = []
+    for t in times:
+        idx = min(range(len(time_stamps)), key=lambda i: abs(time_stamps[i] - t))
+        if loudness_values[idx] >= threshold:
+            filtered.append(t)
+
+    return filtered
+
+
+def smart_spacing(times, min_gap=0.5):
+    if not times:
+        return []
+    spaced = [times[0]]
+    for t in times[1:]:
+        if t - spaced[-1] >= min_gap:
+            spaced.append(t)
+    return spaced
+
+
+def snap_onsets_to_beats(beats, onsets, snap_threshold=0.08):
+    snapped = set(beats)
+    for onset in onsets:
+        if not beats:
+            snapped.add(onset)
+            continue
+        nearest_beat = min(beats, key=lambda b: abs(b - onset))
+        if abs(nearest_beat - onset) <= snap_threshold:
+            snapped.add(nearest_beat)
+        else:
+            snapped.add(onset)
+    return sorted(snapped)
+
+
+# ------------------ EDL ------------------
+
+def create_edl_markers(times, output_file, fps=30):
+    lines = ["TITLE: Timeline Markers", "FCM: NON-DROP FRAME", ""]
+    for i, t in enumerate(times, 1):
+        tc = seconds_to_timecode(t, fps)
+        lines.append(f"{i:03d}  001      V     C        {tc} {tc} {tc} {tc}")
+        lines.append(f"* FROM CLIP NAME: Marker {i}")
+        lines.append(f"|M:{tc}|Drop {i}")
+        lines.append("")
+    with open(output_file, "w") as f:
+        f.write("\n".join(lines))
+
+
+# ------------------ Entry point ------------------
+
+def process_audio_file(audio_path, out_txt, out_edl, fps=30,
+                       sensitivity="low", loudness=70, min_gap=0.5,
+                       beats_only=False, progress_callback=None):
+    """Programmatic entry point. Returns dict with marker_count."""
+    def report(pct, msg):
+        if progress_callback:
+            progress_callback(pct, msg)
+
+    report(5, "Loading audio…")
+    audio = MonoLoader(filename=audio_path)()
+
+    if beats_only:
+        report(25, "Detecting beats…")
+        markers = detect_beats(audio)
+    else:
+        report(20, "Detecting beats…")
+        beats = detect_beats(audio)
+        report(40, "Detecting onsets…")
+        onsets = detect_onsets(audio, sensitivity=sensitivity)
+        report(55, "Merging markers…")
+        markers = snap_onsets_to_beats(beats, onsets, snap_threshold=0.08)
+
+    report(65, "Filtering by loudness…")
+    markers = filter_by_loudness(audio, markers, percentile=loudness)
+
+    report(80, "Enforcing spacing…")
+    markers = smart_spacing(markers, min_gap=min_gap)
+
+    final = [round(t, 3) for t in markers]
+
+    report(90, "Writing outputs…")
+    with open(out_txt, "w") as f:
+        for t in final:
+            f.write(f"{t}\n")
+    create_edl_markers(final, out_edl, fps)
+
+    report(100, "Done")
+    return {"marker_count": len(final)}
+</file>
+
+<file path="requirements.txt">
+Flask>=3.0
+essentia>=2.1b6.dev234
+numpy>=1.24
+</file>
+
+<file path="worker.py">
+import queue
+import threading
+import uuid
+import json
+import time
+from pathlib import Path
+from datetime import datetime
+
+from config import Config
+
+# Import your processing function
+from process import process_audio_file  # see note below
+
+
+class JobStore:
+    """In-memory job state. Persisted to a JSON file per-job for durability."""
+
+    def __init__(self):
+        self._jobs = {}
+        self._lock = threading.Lock()
+
+    def create(self, job_id, filename, params):
+        with self._lock:
+            self._jobs[job_id] = {
+                "id": job_id,
+                "filename": filename,
+                "params": params,
+                "status": "queued",       # queued | processing | done | error
+                "progress": 0,
+                "message": "Queued",
+                "created_at": time.time(),
+                "finished_at": None,
+                "output_txt": None,
+                "output_edl": None,
+                "marker_count": 0,
+                "error": None,
+            }
+        return self._jobs[job_id]
+
+    def update(self, job_id, **kwargs):
+        with self._lock:
+            if job_id in self._jobs:
+                self._jobs[job_id].update(kwargs)
+
+    def get(self, job_id):
+        with self._lock:
+            return self._jobs.get(job_id)
+
+    def all(self):
+        with self._lock:
+            return sorted(self._jobs.values(), key=lambda j: j["created_at"], reverse=True)
+
+    def delete(self, job_id):
+        with self._lock:
+            return self._jobs.pop(job_id, None)
+
+    def prune_old(self, ttl_seconds):
+        """Remove jobs older than TTL."""
+        now = time.time()
+        with self._lock:
+            old_ids = [
+                jid for jid, j in self._jobs.items()
+                if j.get("finished_at") and (now - j["finished_at"]) > ttl_seconds
+            ]
+            for jid in old_ids:
+                self._jobs.pop(jid, None)
+        return old_ids
+
+
+jobs = JobStore()
+job_queue = queue.Queue(maxsize=Config.MAX_QUEUE_SIZE)
+
+
+def _run_job(job):
+    job_id = job["id"]
+    jobs.update(job_id, status="processing", progress=5,
+                message="Loading audio…")
+
+    upload_path = Path(Config.UPLOAD_FOLDER) / job["filename"]
+    out_txt = Path(Config.OUTPUT_FOLDER) / f"{job_id}.txt"
+    out_edl = Path(Config.OUTPUT_FOLDER) / f"{job_id}.edl"
+
+    try:
+        def on_progress(pct, msg):
+            jobs.update(job_id, progress=int(pct), message=msg)
+
+        result = process_audio_file(
+            audio_path=str(upload_path),
+            out_txt=str(out_txt),
+            out_edl=str(out_edl),
+            fps=job["params"]["fps"],
+            sensitivity=job["params"]["sensitivity"],
+            loudness=job["params"]["loudness"],
+            min_gap=job["params"]["min_gap"],
+            beats_only=job["params"]["beats_only"],
+            progress_callback=on_progress,
+        )
+
+        jobs.update(
+            job_id,
+            status="done",
+            progress=100,
+            message=f"{result['marker_count']} markers",
+            output_txt=f"{job_id}.txt",
+            output_edl=f"{job_id}.edl",
+            marker_count=result["marker_count"],
+            finished_at=time.time(),
+        )
+    except Exception as e:
+        jobs.update(
+            job_id,
+            status="error",
+            message="Processing failed",
+            error=str(e),
+            finished_at=time.time(),
+        )
+    finally:
+        # Delete the original upload once processing is done
+        try:
+            upload_path.unlink(missing_ok=True)
+        except Exception:
+            pass
+
+
+def _worker_loop():
+    while True:
+        job = job_queue.get()
+        if job is None:
+            break
+        try:
+            _run_job(job)
+        finally:
+            job_queue.task_done()
+
+
+def _cleanup_loop():
+    while True:
+        time.sleep(Config.CLEANUP_INTERVAL)
+        # Prune job records
+        old_ids = jobs.prune_old(Config.FILE_TTL_SECONDS)
+        # Delete files older than TTL
+        now = time.time()
+        for folder in (Config.UPLOAD_FOLDER, Config.OUTPUT_FOLDER):
+            for f in Path(folder).iterdir():
+                try:
+                    if f.is_file() and (now - f.stat().st_mtime) > Config.FILE_TTL_SECONDS:
+                        f.unlink()
+                except Exception:
+                    pass
+
+
+def start_workers(num_workers=2):
+    threads = []
+    for _ in range(num_workers):
+        t = threading.Thread(target=_worker_loop, daemon=True)
+        t.start()
+        threads.append(t)
+    cleanup = threading.Thread(target=_cleanup_loop, daemon=True)
+    cleanup.start()
+    return threads
+
+
+def enqueue(filename, params):
+    job_id = uuid.uuid4().hex[:12]
+    job = jobs.create(job_id, filename, params)
+    try:
+        job_queue.put_nowait(job)
+    except queue.Full:
+        jobs.update(job_id, status="error",
+                    message="Queue full — try again later",
+                    finished_at=time.time())
+        raise RuntimeError("queue_full")
+    return job
+</file>
+
+</files>

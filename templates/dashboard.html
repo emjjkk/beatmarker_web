@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · Beatmarker{% endblock %}
+{% block content %}
+
+<section class="panel">
+  <h2 class="panel-title">New Job</h2>
+
+  <form id="upload-form" class="grid-form">
+    <label class="field field-full">
+      <span class="field-label">Audio File</span>
+      <input type="file" name="file" id="file-input"
+             accept=".wav,.mp3,.flac,.ogg,.m4a,.aiff,.aif" required>
+      <span class="hint">wav, mp3, flac, ogg, m4a, aiff — max 200 MB</span>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Sensitivity</span>
+      <select name="sensitivity" id="sensitivity">
+        <option value="very_low">Very Low — only major drops</option>
+        <option value="low" selected>Low — significant hits</option>
+        <option value="medium">Medium</option>
+        <option value="high">High — subtle hits</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Loudness Threshold <span id="loudness-val">70</span>%</span>
+      <input type="range" name="loudness" id="loudness" min="0" max="100" value="70">
+      <span class="hint">Higher = fewer, louder markers</span>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Min Gap (seconds)</span>
+      <input type="number" name="min_gap" id="min_gap" step="0.1" min="0" value="0.5">
+    </label>
+
+    <label class="field">
+      <span class="field-label">FPS</span>
+      <input type="number" name="fps" id="fps" min="1" max="120" value="30">
+    </label>
+
+    <label class="field field-inline">
+      <input type="checkbox" name="beats_only" id="beats_only">
+      <span>Beats only (ignore onsets)</span>
+    </label>
+
+    <div class="field field-full">
+      <button type="submit" class="btn btn-primary" id="submit-btn">Process</button>
+    </div>
+  </form>
+</section>
+
+<section class="panel">
+  <h2 class="panel-title">Jobs</h2>
+  <div id="jobs-list" class="jobs">
+    <p class="muted">No jobs yet.</p>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

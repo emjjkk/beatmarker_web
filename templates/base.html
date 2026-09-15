@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Beatmarker{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="brand">Beatmarker</a>
+    <div class="header-actions">
+      <a class="btn btn-ghost" target="_blank" rel="noopener"
+         href="https://www.producthunt.com/">Vote on ProductHunt</a>
+      <a class="btn btn-ghost" target="_blank" rel="noopener"
+         href="https://www.buymeacoffee.com/">Buy Me a Coffee</a>
+      <button id="theme-toggle" class="btn btn-ghost" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <span>Files auto-delete after 6 hours.</span>
+  </footer>
+
+  <script>
+    // Apply saved theme before paint
+    (function () {
+      const saved = localStorage.getItem("bm-theme");
+      const prefers = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", saved || prefers);
+    })();
+  </script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
